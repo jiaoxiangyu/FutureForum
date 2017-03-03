@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-13 17:27:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.jxy.futureforum.model">
+	<class name="User" abstract="true">
+		<id name="userId" type="int">
+			<column name="userId" />
+			<generator class="increment" />
+		</id>		
+		<property name="username" type="java.lang.String">
+			<column name="username" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" />
+		</property>
+		<union-subclass name="Consumer" table="consumer">
+			<property name="headImg" type="java.lang.String">
+				<column name="headImg" />
+			</property>
+			<property name="name" type="java.lang.String">
+				<column name="name" />
+			</property>
+			<property name="sex" type="java.lang.String">
+				<column name="sex" />
+			</property>
+			<property name="age" type="int">
+				<column name="age" />
+			</property>
+			<property name="registerTime" type="java.util.Date">
+				<column name="registerTime" />
+			</property>
+			<property name="email" type="java.lang.String">
+				<column name="email" />
+			</property>
+			<property name="tel" type="java.lang.String">
+				<column name="tel" />
+			</property>
+		</union-subclass>
+		<union-subclass name="Manager" table="manager">
+			<property name="name" type="java.lang.String">
+				<column name="name" />
+			</property>
+			<property name="sex" type="java.lang.String">
+				<column name="sex" />
+			</property>
+			<property name="age" type="int">
+				<column name="age" />
+			</property>
+			<property name="registerTime" type="java.util.Date">
+				<column name="registerTime" />
+			</property>
+			<property name="email" type="java.lang.String">
+				<column name="email" />
+			</property>
+			<property name="tel" type="java.lang.String">
+				<column name="tel" />
+			</property>
+		</union-subclass>
+	</class>
+</hibernate-mapping>

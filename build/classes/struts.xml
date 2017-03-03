@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts  PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>  
+   <!--  声明包 
+       strict-method-invocation="false"   关闭严格模式执行，才能使用通配符
+   --> 
+   <constant name="struts.multipart.saveDir" value="/udplod/temp"></constant> 
+   <package name="adminPackage" namespace="/"  extends="struts-default" strict-method-invocation="false">
+   
+   <!-- 配置自定义拦截器loginFilter -->
+       <!--  <interceptors>
+            <interceptor name="loginFilter" class="com.jxy.futureforum.filter.LoginFilter"/>
+            <interceptor-stack name="mystack">
+                <interceptor-ref name="loginedCheck" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>    -->   
+   
+      <!--  定义action -->  
+      <!-- 捕捉异常，转到登录页面 -->
+     <!--  <global-results>              
+          <result name="tologin" >/WEB-INF/jsp/login.jsp</result>  
+      </global-results>   -->
+      <!--   转到WEB-INF下的login.jsp   -->           
+      <action name="indexAction"  class="com.jxy.futureforum.action.IndexAction">
+            <result name="success" >/WEB-INF/jsp/login.jsp</result>
+      </action>
+      <!--   登录 -->
+      <action name="loginAction" class="com.jxy.futureforum.action.LoginAction" >
+            <result name="success" type="redirectAction">articleAction_seekNewArticle</result>
+            <result name="input">/WEB-INF/jsp/login.jsp</result>
+      </action>
+      <!-- 转到WEB-INF/jsp文件夹里的jsp -->
+       <action name="linkAction_*"  class="com.jxy.futureforum.action.LinkAction" method="{1}">
+            <!-- 获得所有博客类型 -->
+            <result name="getAllArticleType">/WEB-INF/jsp/user/article_add.jsp</result>  
+            <result name="rankList">/WEB-INF/jsp/user/rankList.jsp</result>
+             <result name="typeLink">/WEB-INF/jsp/user/article_all.jsp</result>
+                                                                   
+            <result name="getRegister">/WEB-INF/jsp/register.jsp</result>
+            <result name="logout">/WEB-INF/jsp/login.jsp</result> 
+      </action>
+      
+      <!-- Article帖子的增删改查 -->
+      <action name="articleAction_*"  class="com.jxy.futureforum.action.ArticleAction" method="{1}">              
+           <result name="seekNewArticle">/WEB-INF/jsp/user/main.jsp</result>
+           <result name="seekAllArticle">/WEB-INF/jsp/user/article_all.jsp</result>
+           <result name="pageSeekAll">/WEB-INF/jsp/user/article_all.jsp</result>           
+           <result name="searchArticle">/WEB-INF/jsp/user/article_all.jsp</result>
+           <result name="retunSearchArticle">/WEB-INF/jsp/user/article_all.jsp</result>          
+           <result name="pageSeekByCondition">/WEB-INF/jsp/user/article_all.jsp</result>                      
+           <result name="add">/WEB-INF/jsp/user/article_add.jsp</result>            
+           <result name="seekMyArticle">/WEB-INF/jsp/user/article_my.jsp</result>           
+           <result name="pageSeekMyArticle">/WEB-INF/jsp/user/article_my.jsp</result> 
+           <result name="pageSeekMyArticleForMyInfo">/WEB-INF/jsp/user/consumer_myInfo.jsp</result>
+           <result name="getUpdateArticleInfo">/WEB-INF/jsp/user/article_update.jsp</result>
+           <result name="update">/WEB-INF/jsp/user/article_update.jsp</result>           
+           <result name="getArticleInfo">/WEB-INF/jsp/user/article_getInfo.jsp</result>            
+           <result name="pageSeekAuthorArticle">/WEB-INF/jsp/user/consumer_viewAuthor.jsp</result>
+           <result name="delectArticle">/WEB-INF/jsp/user/article_my.jsp</result>      
+      </action>
+      
+      <!-- Consumer增删改查 -->
+      <action name="consumerAction_*" class="com.jxy.futureforum.action.ConsumerAction" method="{1}">
+      		<!-- 获得个人信息 -->
+      		<result name="getInfo">/WEB-INF/jsp/user/consumer_update.jsp</result> 
+      		<!-- 获得我的个人主页 -->
+      		<result name="seekMyInfo">/WEB-INF/jsp/user/consumer_myInfo.jsp</result>
+            <result name="updateInfo">/WEB-INF/jsp/user/consumer_update.jsp</result>
+            <result name="updateHeadImg">/WEB-INF/jsp/user/consumer_update.jsp</result>
+            <!-- 获得作者的个人主页 -->
+            <result name="viewConsumerInfo">/WEB-INF/jsp/user/consumer_viewAuthor.jsp</result>
+            <result name="register">/WEB-INF/jsp/login.jsp</result>                          
+      </action>
+      
+       <!-- Reply增删改查 -->
+      <action name="replyAction_*" class="com.jxy.futureforum.action.ReplyAction" method="{1}">
+      		<result name="emitreply">/WEB-INF/jsp/user/article_getInfo.jsp</result> 
+            <!-- <result name="updateInfo">/WEB-INF/jsp/user/consumer_myInfo.jsp</result>   -->             
+      </action>
+      
+   </package>
+</struts>

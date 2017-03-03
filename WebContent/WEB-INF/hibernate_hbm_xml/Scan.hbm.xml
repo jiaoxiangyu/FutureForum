@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-13 17:27:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jxy.futureforum.model.Scan" table="scan">
+        <id name="scanId" type="int">
+            <column name="scanId" />
+            <generator class="increment" />
+        </id>
+        <property name="scanTime" type="java.util.Date">
+            <column name="scanTime" />
+        </property>
+        <property name="articleId" type="int">
+            <column name="articleId" />
+        </property>
+        <property name="viewerId" type="int">
+            <column name="viewerId" />
+        </property>
+        <property name="viewer" type="java.lang.String">
+            <column name="viewer" />
+        </property>
+    </class>
+</hibernate-mapping>

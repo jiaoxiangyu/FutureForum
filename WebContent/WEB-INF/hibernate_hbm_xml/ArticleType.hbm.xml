@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-13 17:27:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jxy.futureforum.model.ArticleType" table="articleType">
+        <id name="articleTypeId" type="int">
+            <column name="articleTypeId" />
+            <generator class="increment" />
+        </id>
+        <property name="articleTypeName" type="java.lang.String">
+            <column name="articleTypeName" />
+        </property>
+        <property name="articleTypeDescrip" type="java.lang.String">
+            <column name="articleTypeDescrip" />
+        </property>
+    </class>
+</hibernate-mapping>
